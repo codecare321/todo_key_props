@@ -1,0 +1,11 @@
+.todolist {
+  display: flex;
+}
+.listOfItem {
+  margin-right: 12px;
+}
+
+.deleteButton {
+  background-color: red;
+  height: 20px;
+}

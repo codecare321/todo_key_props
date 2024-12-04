@@ -1,14 +1,29 @@
 import { PropTypes } from "prop-types";
-function TodoListItem({ todo }) {
+import { memo } from "react";
+import "./TodoListItem.css";
+function TodoListItem({ todo, onDelete }) {
   return (
     <>
-      <li>{todo.value}</li>
+      <div className="todolist d-flex">
+        <li className="listOfItem">{todo.value}</li>
+        <button
+          onClick={() => {
+            onDelete(todo.value);
+          }}
+          className="deleteButton"
+        >
+          X
+        </button>
+      </div>
     </>
   );
 }
 
-export default TodoListItem;
+export default memo(TodoListItem);
 
 TodoListItem.propTypes = {
-  todo: PropTypes.string.isRequired,
+  todo: PropTypes.shape({
+    value: PropTypes.string.isRequired,
+  }).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
